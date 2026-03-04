@@ -1,27 +1,17 @@
-# Pasta duplicada (projeto Nest está na raiz; use a raiz para trabalhar)
-/livraria
+# Dependências e build
+node_modules/
+dist/
+build/
 
-# Nestjs specific
-/dist
-/node_modules
-/build
-/tmp
-
-# Logs
-logs
-*.log
-npm-debug.log*
-pnpm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-
-# dotenv environment variable files
+# Ambiente
 .env
-.env.development
-.env.test
-.env.production
+.env.*
 
-# temp directory
+# Logs e temp
+*.log
 .temp
 .tmp
+
+# IDE
+.idea
+.vscode/
