@@ -1,3 +1,6 @@
+# Pasta duplicada (projeto Nest está na raiz; use a raiz para trabalhar)
+/livraria
+
 # Nestjs specific
 /dist
 /node_modules
