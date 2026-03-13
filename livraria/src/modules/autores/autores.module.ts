@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
+import { AutoresController } from './autores.controller';
+import { AutoresService } from './autores.service';
 
 @Module({
-    controllers: [], 
-    providers: [],
-    exports: []
+  controllers: [AutoresController],
+  providers: [AutoresService],
+  exports: [],
 })
-
-export class AutoresModule{}
+export class AutoresModule {}
