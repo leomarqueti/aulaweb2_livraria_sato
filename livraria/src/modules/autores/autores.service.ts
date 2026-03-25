@@ -1,10 +1,11 @@
 import {
+  BadRequestException,
   HttpCode,
   HttpStatus,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { CriarAutorDto } from './autores.dto';
+import { AtualizarAutoDto, CriarAutorDto } from './autores.dto';
 
 let autores = [
   {
@@ -62,26 +63,29 @@ export class AutoresService {
     return autores;
   }
 
-  atualizarAutor(id: number, body: any) {
+  atualizarAutor(id: number, body: AtualizarAutoDto) {
     const autorEncontrado = this.listarAutor(id);
 
-    if (!autorEncontrado) {
-      return 'Autor não encontrado';
+    if (!body.nome && !body.email) {
+      throw new BadRequestException('Nome e email são obrigatorios');
     }
 
-    autorEncontrado.nome = body.nome;
-    autorEncontrado.email = body.email;
+    if (body.nome) {
+      autorEncontrado.nome = body.nome;
+    }
+
+    if (body.email) {
+      autorEncontrado.email = body.email;
+    }
 
     return autorEncontrado;
   }
 
   deletar(id: number) {
-    const autor = autores.find((autor) => autor.id === id);
+    const autorEncontrado = this.listarAutor(id);
 
-    if (autor) {
-      return autores.filter((autor) => autor.id === id);
+    if (autorEncontrado) {
+      return autores.filter((autor) => autor.id !== id);
     }
-
-    return 'Autor não encontrado';
   }
 }

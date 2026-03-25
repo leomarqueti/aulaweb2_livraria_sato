@@ -1,4 +1,9 @@
 export class CriarAutorDto {
   nome: string;
-  email: string
+  email: string;
+}
+
+export class AtualizarAutoDto {
+  nome?: string;
+  email?: string;
 }
