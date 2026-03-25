@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   ParseIntPipe,
@@ -30,7 +31,15 @@ export class AutoresController {
   }
 
   @Put('/atualizar-autor/:id')
-  atualizarAutor(@Param('id', ParseIntPipe) id: number, @Body() body: any) {
-    //return this.autoresService.atulizarAutor(id, body);
+  atualizarAutor(
+    @Param('id', ParseIntPipe) idAutor: number,
+    @Body() body: any,
+  ) {
+    return this.autoresService.atualizarAutor(idAutor, body);
+  }
+
+  @Delete('/listar-autor/:id')
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.autoresService.deletar(id);
   }
 }
