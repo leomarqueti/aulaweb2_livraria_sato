@@ -1,7 +1,7 @@
 import { Global, Module } from '@nestjs/common';
 import { DRIZZLE } from './database.constants';
 import { drizzle } from 'drizzle-orm/node-mssql';
-import * as schema from '../schemas';
+import * as schema from '../schemas/index';
 
 @Global()
 @Module({

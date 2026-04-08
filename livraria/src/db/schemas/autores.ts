@@ -1,8 +1,12 @@
 import { datetime, int, mssqlTable, varchar } from 'drizzle-orm/mssql-core';
 
-export const autoresTable = mssqlTable('autores', {
-  id: int().primaryKey().identity(),
-  nome: varchar({ length: 100 }).notNull(),
+export const autoresTabela = mssqlTable('autores', {
+  id: int('id').primaryKey().identity(),
+  nome: varchar('nome',{ length: 100 }).notNull(),
   email: varchar({ length: 255 }).notNull().unique(),
-  creatadoEm: datetime('criadoEm'),
+  criadoEm: datetime('criado_em').notNull().defaultGetDate(),
 });
+
+
+export type Author = typeof autoresTabela.$inferSelect;
+export type CriarAutorDto = typeof autoresTabela.$inferInsert;
