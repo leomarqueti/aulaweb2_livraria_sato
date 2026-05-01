@@ -39,7 +39,5 @@ export class AutoresController {
   }
 
   @Delete('/deletar-autor/:id')
-  deletarAutor(@Param('id', ParseIntPipe) idAutor: number) {
-    return this.autoresService.deletarAutor(idAutor);
-  }
+  deletarAutor(@Param('id', ParseIntPipe) idAutor: number) {}
 }
