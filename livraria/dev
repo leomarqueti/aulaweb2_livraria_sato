@@ -1,0 +1,6 @@
+
+> livraria@0.0.1 start
+> nest start
+
+[32m[Nest] 10000  - [39m23/04/2026, 22:02:11 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 10000  - [39m23/04/2026, 22:02:11 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +17ms[39m
