@@ -8,10 +8,14 @@ import {
 } from '@nestjs/common';
 import { LivrosRepository } from './livros.repository';
 import { CriarLivroDto } from './livros.dto';
+import { AutoresService } from '../autores/autores.service';
 
 @Injectable()
 export class LivrosService {
-  constructor(private readonly livrosRepository: LivrosRepository) {}
+  constructor(
+    private readonly livrosRepository: LivrosRepository,
+    private readonly autoresService: AutoresService,
+  ) {}
 
   async listarLivros() {
     return this.livrosRepository.listarLivros();
@@ -27,7 +31,9 @@ export class LivrosService {
     return livroEncontrado;
   }
 
-  async criarLivro(body: CriarLivroDto){
+  async criarLivro(body: CriarLivroDto) {
+    await this.autoresService.listarAutor(body.idAutor);
+
     return await this.livrosRepository.criarLivro(body);
   }
 }

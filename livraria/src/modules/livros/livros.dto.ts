@@ -9,7 +9,7 @@ import {
 } from 'class-validator';
 
 export class CriarLivroDto {
-  @Type(() => Number)
+  @IsNumber()
   idAutor: number;
   @IsString({ message: 'O titulo deve ser uma string' })
   @IsNotEmpty({ message: 'O titulo é obrigatório' })

@@ -18,8 +18,7 @@ import { AutoresService } from '../autores/autores.service';
 @Injectable()
 export class LivrosRepository {
   constructor(
-    @Inject(DRIZZLE) private readonly db: DrizzleDB,
-    private readonly autoresService: AutoresService,
+    @Inject(DRIZZLE) private readonly db: DrizzleDB
   ) {}
 
   async listarLivros() {
@@ -45,11 +44,7 @@ export class LivrosRepository {
 
   async criarLivro(body: CriarLivroDto) {
     try {
-      const autor = await this.autoresService.listarAutor(body.idAutor);
-
-      if (!autor) {
-        throw new InternalServerErrorException('Autor não existe');
-      }
+      
       await this.db.insert(livrosTabela).values(body);
 
       return `Livro ${body.titulo} criado com sucesso`;
